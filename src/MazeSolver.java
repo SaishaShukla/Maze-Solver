@@ -79,8 +79,7 @@ public class MazeSolver {
         Boolean[][] isVisited = new Boolean[maze.getRows()][maze.getCols()];
         // 3. Loop while the stack is not empty:
         //    a. Pop a 'current' position from the stack.
-        Position current = (maze.getStart());
-        Position last = current;
+        //Position current = maze.getStart();
         while (!theStack.isEmpty()) {
             boolean isDone = false;
             Position current = theStack.pop();
@@ -93,7 +92,7 @@ public class MazeSolver {
                         isDone = true;
                     }
                 }
-                if (maze.downOpen(current)) {
+                else if (maze.downOpen(current)) {
                     Position currentDown = new Position(current.x, current.y + 1);
                     if (!(currentDown.y >= maze.numLines) && isVisited[currentDown.x][currentDown.y] == null) {
                         theStack.push(currentDown);

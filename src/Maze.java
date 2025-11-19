@@ -122,6 +122,7 @@ public class Maze {
             }
         }
         return false;
+
     }
 
     public boolean rightOpen(Position current) {
@@ -137,5 +138,4 @@ public class Maze {
         }
         return false;
         }
-        return false;
     }
