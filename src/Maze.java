@@ -83,31 +83,59 @@ public class Maze {
     }
 
     public boolean leftOpen(Position current) {
-        if (current.x != 0 && (theArray[current.x-1][current.y] == '*' || theArray[current.x-1][current.y] == 'E')) {
-            return true;
+        if (!(current.x == 0)) {
+            try {
+            if (theArray[current.x - 1][current.y] == '*') {
+                return true;
+            }
+        }
+            catch (ArrayIndexOutOfBoundsException e) {
+                return false;
+            }
         }
         return false;
 
     }
 
     public boolean downOpen(Position current) {
-        if (current.y != numLines - 1 && (theArray[current.x][current.y + 1] == '*' || theArray[current.x][current.y + 1] == 'E')) {
-            return true;
+        if (!(current.y == numLines - 1)) {
+            try {
+                if (theArray[current.x][current.y + 1] == '*') {
+                    return true;
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+                return false;
+            }
         }
         return false;
     }
 
     public boolean upOpen(Position current) {
-        if ((current.y!=0)&&(theArray[current.x][current.y - 1] == '*' || theArray[current.x][current.y - 1] == 'E')) {
-            return true;
+        if (!(current.y == 0)) {
+            try {
+                if (theArray[current.x][current.y - 1] == '*') {
+                    return true;
+                }
+            }
+            catch (ArrayIndexOutOfBoundsException e) {
+                return false;
+            }
         }
         return false;
     }
 
     public boolean rightOpen(Position current) {
-        if ((current.x!=numLines)&&(theArray[current.x + 1][current.y] == '*' || theArray[current.x + 1][current.y] == 'E')) {
-            return true;
+        if (!(current.x == sizeLine - 1)) {
+            try {
+                if (theArray[current.x + 1][current.y] == '*') {
+                    return true;
+                }
+            }
+            catch (ArrayIndexOutOfBoundsException e) {
+                return false;
+            }
+        }
+        return false;
         }
         return false;
     }
-}

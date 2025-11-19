@@ -82,54 +82,50 @@ public class MazeSolver {
         Position current = (maze.getStart());
         Position last = current;
         while (!theStack.isEmpty()) {
+            boolean isDone = false;
+            Position current = theStack.pop();
                 if (maze.upOpen(current)) {
                     Position currentUp = new Position(current.x, current.y - 1);
-                    if (!last.isEqual(currentUp)) {
+                    if (!(currentUp.y < 0) && isVisited[currentUp.x][currentUp.y] == null) {
+                        currentUp.setParent(current);
                         theStack.push(currentUp);
                         isVisited[currentUp.x][currentUp.y] = true;
-                        last = current;
-                        current = currentUp;
+                        isDone = true;
                     }
                 }
                 if (maze.downOpen(current)) {
                     Position currentDown = new Position(current.x, current.y + 1);
-                    if (!last.isEqual(currentDown)) {
+                    if (!(currentDown.y >= maze.numLines) && isVisited[currentDown.x][currentDown.y] == null) {
                         theStack.push(currentDown);
                         isVisited[currentDown.x][currentDown.y] = true;
-                        last = current;
-                        current = currentDown;
+                        isDone = true;
                     }
                 }
-                if (maze.leftOpen(current)) {
+                else if (maze.leftOpen(current)) {
                     Position currentLeft = new Position(current.x - 1, current.y);
-                    if (!last.isEqual(currentLeft)) {
+                    if (!(currentLeft.x < 0) && isVisited[currentLeft.x][currentLeft.y] == null) {
                         theStack.push(currentLeft);
                         isVisited[currentLeft.x][currentLeft.y] = true;
-                        last = current;
-                        current = currentLeft;
+                        isDone = true;
                     }
                 }
-                if (maze.rightOpen(current)) {
+                else if (maze.rightOpen(current)) {
                     Position currentRight = new Position(current.x + 1, current.y);
-                    if (!last.isEqual(currentRight)) {
+                    if (!(currentRight.x >= maze.sizeLine) && isVisited[currentRight.x][currentRight.y] == null) {
                         theStack.push(currentRight);
                         isVisited[currentRight.x][currentRight.y] = true;
-                        last = current;
-                        current = currentRight;
+                        isDone = true;
                     }
                 }
-                else {
-                    LinkedList<Position> returnList = new LinkedList<>();
+                else if (isDone == false && maze.getEnd().isEqual(current)){
+                    List<Position> returnList = new LinkedList<>();
                     Stack<Position> tempStack = new Stack<>();
                     Position parent = null;
-                    for (int i = 0; i < theStack.size(); i++) {
+                    while (!theStack.isEmpty()) {
                         tempStack.push(theStack.pop());
                     }
-                    for (int i = 0; i < tempStack.size(); i++) {
-                        Position cur = tempStack.pop();
-                        cur.setParent(parent);
-                        returnList.add(cur);
-                        parent = cur;
+                    while (!tempStack.isEmpty()) {
+                        returnList = reconstructPath(tempStack.peek());
                     }
                     return returnList;
                 }
