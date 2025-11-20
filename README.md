@@ -5,7 +5,7 @@
   The purpose of our project is for the program to solve a maze given the 2D-array representation, the user's intended start, and destination in an efficient manner.
 
 ## *Technical details*
-  Two key java data structures we used were **Stacks** and **Queues**, which helped us implement DFS (Depth-First Search) and BFS (Breadth-First Search) respectively. We also used **Arrays, 2D-Arrays and ArrayLists** to store data as well.
+  Two key java data structures we used were **Stacks** and **Queues**, which helped us implement DFS (Depth-First Search) and BFS (Breadth-First Search) respectively. We also used **Arrays, 2D-Arrays, LinkedLists, Lists, and ArrayLists** to store data as well.
 
 ## *Challenges*
   Some challenges we faced when programming our application was: the nature of the Java 2D-array and understanding its relationships between rows and columns. Also, we struggled to identify how to use the Java.Swing.Text. Position rather than writing the **Position** class ourselves. In the end, however, we overcame by seeking help from you and ran the code on paper step by step and used more time to correct the project.
