@@ -2,7 +2,7 @@
   This is the **Maze Solver** application made by Saisha and Robert.
 
 ## *Purpose*
-  The purpose of our project is for the user to solve a maze given the 2D-array representation, the user's intended start, and destination in an efficient manner.
+  The purpose of our project is for the program to solve a maze given the 2D-array representation, the user's intended start, and destination in an efficient manner.
 
 ## *Technical details*
   Two key java data structures we used were **Stacks** and **Queues**, which helped us implement DFS (Depth-First Search) and BFS (Breadth-First Search) respectively. We also used **Arrays, 2D-Arrays and ArrayLists** to store data as well.
