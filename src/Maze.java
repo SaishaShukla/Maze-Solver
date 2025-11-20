@@ -31,7 +31,7 @@ public class Maze {
                 String currentLine = txtInput2.nextLine();
                 for (int c = 0; c < sizeLine; c ++) {
                     // Check to ensure we don't go out of bounds if a line is short
-                        theArray[r][c] = currentLine.charAt(c);
+                    theArray[r][c] = currentLine.charAt(c);
                 }
             }
         }
@@ -85,7 +85,7 @@ public class Maze {
     public boolean leftOpen(Position current) {
         if (!(current.x == 0)) {
             try {
-            if (theArray[current.x - 1][current.y] == '*') {
+            if (theArray[current.x - 1][current.y] == '*'|| theArray[current.x-1][current.y] == 'E') {
                 return true;
             }
         }
@@ -100,7 +100,7 @@ public class Maze {
     public boolean downOpen(Position current) {
         if (!(current.y == numLines - 1)) {
             try {
-                if (theArray[current.x][current.y + 1] == '*') {
+                if (theArray[current.x][current.y + 1] == '*' || theArray[current.x][current.y +1] == 'E') {
                     return true;
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
@@ -111,9 +111,10 @@ public class Maze {
     }
 
     public boolean upOpen(Position current) {
-        if (!(current.y == 0)) {
+        System.out.println(!(current.y == 0));
+        if (!(current.y <= 0)) {
             try {
-                if (theArray[current.x][current.y - 1] == '*') {
+                if (theArray[current.x][current.y - 1] == '*' || theArray[current.x][current.y - 1] == 'E') {
                     return true;
                 }
             }
@@ -128,7 +129,7 @@ public class Maze {
     public boolean rightOpen(Position current) {
         if (!(current.x == sizeLine - 1)) {
             try {
-                if (theArray[current.x + 1][current.y] == '*') {
+                if (theArray[current.x + 1][current.y] == '*' || theArray[current.x+1][current.y] == 'E') {
                     return true;
                 }
             }
